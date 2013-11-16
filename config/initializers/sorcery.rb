@@ -112,8 +112,8 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.key = ENV['FB_APP_ID']
   config.facebook.secret = ENV['FB_APP_SECRET']
   config.facebook.callback_url = ENV['FB_CALLBACK_URL']
-  #config.facebook.user_info_mapping = {:email => "email", :name => "name",
-  #  :first_name => "first_name", :last_name => "last_name", :gender => "gender", :locale => "locale"}
+  config.facebook.user_info_mapping = {:email => "email", :name => "name",
+    :first_name => "first_name", :last_name => "last_name", :gender => "gender", :locale => "locale"}
   config.facebook.access_permissions = ["email","user_birthday","user_about_me",
     "user_education_history","user_work_history","user_location","user_status","friends_status","friends_location","friends_photos","publish_actions","read_stream"]
   #

@@ -10,7 +10,7 @@ class OauthsController < ApplicationController
       
   def callback
     provider = params[:provider]
-    redirect_path = cookies[:redirect_path] || root_path
+    redirect_path = cookies[:redirect_path] || "/"
     cookies.delete :redirect_path
 
     if @user = login_from(provider)
@@ -21,7 +21,7 @@ class OauthsController < ApplicationController
       else
         reset_session
         @user = nil
-        redirect_to root_path, :notice => "you already signed out this service. if you would like to re-signup, please contact us."
+        redirect_to "/", :notice => "you already signed out this service. if you would like to re-signup, please contact us."
       end
     else
       begin
