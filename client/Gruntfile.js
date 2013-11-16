@@ -7,9 +7,25 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+// for grunt-proxy start ---
+var LIVERELOAD_PORT = 35729;
+var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
+var mountFolder = function (connect, dir) {
+  return connect.static(require('path').resolve(dir));
+};
+
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+// for grunt-proxy end   ---
+
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
+
+  // configurable paths
+  var yeomanConfig = {
+    app: 'app',
+    dist: '../public'
+  };
 
   grunt.initConfig({
     yeoman: {
@@ -64,13 +80,23 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+        {
+          context: '/api',
+          host: 'localhost',
+          port: 3000
+        }
+      ],
       livereload: {
         options: {
-          open: true,
-          base: [
-            '.tmp',
-            '<%= yeoman.app %>'
-          ]
+          middleware: function (connect) {
+            return [
+              proxySnippet,
+              lrSnippet,
+              mountFolder(connect, '.tmp'),
+              mountFolder(connect, yeomanConfig.app)
+            ];
+          }
         }
       },
       test: {
@@ -332,6 +358,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
+      'configureProxies',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -340,6 +367,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'configureProxies',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
@@ -367,3 +395,4 @@ module.exports = function (grunt) {
     'build'
   ]);
 };
+
