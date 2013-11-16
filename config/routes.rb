@@ -1,4 +1,9 @@
 Compathy2::Application.routes.draw do
+  get "oauth/callback"  => "oauths#callback"
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
+  resources :users, except: [:new, :edit]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
