@@ -1,0 +1,28 @@
+common: &default_settings
+  FSQ_API_VERSION: '20131105'
+  FSQ_API_LIMIT: 1000
+  MAIL_SMTP_ADDRESS: smtp.gmail.com
+  MAIL_SMTP_PORT: 587
+  MAIL_SMTP_DOMAIN: gmail.com
+  MAIL_SMTP_AUTHENTICATION: plain
+
+development:
+  <<: *default_settings
+  BASIC_ID: hoge
+  BASIC_PASS: hoge
+  CY_HOSTNAME: 'localhost:3000'
+  CY_FQDN: 'http://localhost:3000'
+  FB_APP_ID: 111111111111111
+  FB_APP_SECRET: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  FB_CALLBACK_URL: 'http://localhost:3000/oauth/callback?provider=facebook'
+  FB_REDIRECT_URL: 'http://localhost:3000'
+  FSQ_CLIENT_ID: WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+  FSQ_CLIENT_SECRET: LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+  GA_HOST: example.com
+  GA_ID: UA-XXXXX-X
+  GEONAME_ID: hogehoge
+  #MAIL_SMTP_USER: user@example.com
+  #MAIL_SMTP_PASSWORD: xxxxxxxxxx
+  ROME2RIO_KEY: XXXXXXXX
+  SSL_CERT_FILE: /path/to/compathy/doc/cacert.pem
+
