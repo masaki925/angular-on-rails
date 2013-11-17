@@ -1,4 +1,6 @@
+# include config information
 app/scripts/config.js
+Gruntfile.js
 
 app/bower_components
 
