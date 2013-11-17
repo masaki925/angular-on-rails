@@ -1,4 +1,10 @@
 Compathy2::Application.routes.draw do
+  scope :api do
+    get "/" => "top#index"
+  end
+
+  root "top#index"
+  get "top/index"
   get "oauth/callback"  => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
