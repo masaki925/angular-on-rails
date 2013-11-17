@@ -17,6 +17,9 @@ var mountFolder = function (connect, dir) {
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 // for grunt-proxy end   ---
 
+// for direct access on html5mode
+var modRewrite = require('connect-modrewrite');
+
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
@@ -119,6 +122,9 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
+              modRewrite([
+                '!\\.html|\\.js|\\.css|\\.png$ /index.html [L]'
+              ]),
               proxySnippet,
               lrSnippet,
               mountFolder(connect, '.tmp'),
