@@ -36,6 +36,10 @@ module.exports = function (grunt) {
     watch: {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+        options: {
+          bare: true,
+        separator: 'linefeed'
+        },
         tasks: ['coffee:dist']
       },
       coffeeTest: {
