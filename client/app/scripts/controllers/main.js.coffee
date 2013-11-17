@@ -1,6 +1,6 @@
 'use strict'
 
-myApp.controller 'MainCtrl', ['$scope', 'FB_APP_ID', ($scope, FB_APP_ID) ->
+myApp.controller 'MainCtrl', ['$scope', 'FB_APP_ID', '$http', ($scope, FB_APP_ID, $http) ->
   $scope.user = null
   $scope.awesomeThings = [
     'HTML5 Boilerplate',
@@ -29,6 +29,31 @@ myApp.controller 'MainCtrl', ['$scope', 'FB_APP_ID', ($scope, FB_APP_ID) ->
             $scope.short_access_token = short_access_token
       else
         console.log 'User cancelled login or did not fully authorize.'
+
+  $scope.cyVerify = ->
+    $http(
+      url: "/api/oauth/verify"
+      method: "GET"
+      params:
+        short_access_token: $scope.short_access_token
+    ).success( (data) ->
+      if (data.success)
+        alert "success"
+      else
+        alert data
+    ).error( (msg) ->
+      alert msg
+    )
+
+  $scope.cyTouch = ->
+    $http(
+      url: "/api/oauth/touch"
+      method: "GET"
+    ).success( (data) ->
+      alert data
+    ).error( (msg) ->
+      alert msg
+    )
 
   $scope.initFb()
 ]

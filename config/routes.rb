@@ -2,6 +2,8 @@ Compathy2::Application.routes.draw do
   scope :api do
     get "/" => "top#index"
     get "oauth/callback"  => "oauths#callback"
+    get "oauth/verify"  => "oauths#verify"
+    get "oauth/touch"  => "oauths#touch"
     get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
     resources :users
   end

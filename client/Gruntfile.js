@@ -123,7 +123,7 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               modRewrite([
-                '!\\.html|\\.js|\\.css|\\.png$ /index.html [L]'
+                '!(^/api|(\\.html|\\.js|\\.css|\\.png$)) /index.html [L]'
               ]),
               proxySnippet,
               lrSnippet,
