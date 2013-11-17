@@ -18,13 +18,15 @@ myApp.controller 'MainCtrl', ['$scope', 'FB_APP_ID', ($scope, FB_APP_ID) ->
           channelUrl: 'http://compathy.masaki925.com:9000/oauth/callback?provider=facebook'
         )
 
-  $scope.getFb = ->
+  $scope.loginFb = ->
     FB.login (response) ->
       if (response.authResponse)
+        short_access_token = FB.getAuthResponse()['accessToken']
         console.log 'Welcome!  Fetching your information.... '
         FB.api '/me', (response) ->
           $scope.$apply ->
             $scope.user = response
+            $scope.short_access_token = short_access_token
       else
         console.log 'User cancelled login or did not fully authorize.'
 

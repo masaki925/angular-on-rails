@@ -8,8 +8,9 @@
 	<h3 class="text-muted">client</h3>
 </div>
 
-<button ng-hide="user" ng-click="getFb()">Facebook Login</button>
+<button ng-hide="user" ng-click="loginFb()">Facebook Login</button>
 <button class="btn btn-success" ng-show="user" ng-click="cyLogin">Compathy Login</button>
+<pre>{{short_access_token}}</pre>
 <pre>{{user | json}}</pre>
 
 <div class="jumbotron">
