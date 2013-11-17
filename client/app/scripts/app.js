@@ -1,6 +1,7 @@
 'use strict';
 
 var myApp = angular.module('compathy2App', [
+  'config',
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -12,10 +13,6 @@ var myApp = angular.module('compathy2App', [
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
       })
       .otherwise({
         redirectTo: '/'

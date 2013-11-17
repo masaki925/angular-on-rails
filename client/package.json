@@ -39,7 +39,8 @@
     "karma": "~0.10.4",
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "grunt-connect-proxy": "~0.1.6",
-    "connect-livereload": "~0.3.0"
+    "connect-livereload": "~0.3.0",
+    "grunt-ng-constant": "~0.4.5"
   },
   "engines": {
     "node": ">=0.8.0"
