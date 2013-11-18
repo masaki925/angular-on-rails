@@ -14,7 +14,7 @@ development:
   CY_FQDN: 'http://localhost:3000'
   FB_APP_ID: 111111111111111
   FB_APP_SECRET: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  FB_CALLBACK_URL: 'http://localhost:3000/oauth/callback?provider=facebook'
+  FB_CALLBACK_URL: 'http://localhost:9000'
   FB_REDIRECT_URL: 'http://localhost:3000'
   FSQ_CLIENT_ID: WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
   FSQ_CLIENT_SECRET: LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
