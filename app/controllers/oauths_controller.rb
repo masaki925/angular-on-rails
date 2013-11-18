@@ -37,6 +37,7 @@ class OauthsController < ApplicationController
     user_id = debug_token_result["data"]["user_id"]
 
     if auth = Authentication.where( provider: "facebook", uid: user_id ).first
+      session[:user_id] = auth.user_id
       render status: 200,
         json: {
           user: auth.user
