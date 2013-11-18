@@ -1,11 +1,11 @@
 'use strict';
 
 var myApp = angular.module('compathy2App', [
-  'config',
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'config'
 ])
   .config(function ($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(true);
@@ -14,9 +14,9 @@ var myApp = angular.module('compathy2App', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'
