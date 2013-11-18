@@ -14,6 +14,12 @@ class OauthsController < ApplicationController
       }
   end
 
+  def logout
+    reset_session
+    render status: 200,
+      json: {}
+  end
+
   # FIXME: clean up later...
   def verify
     exchange_token_url = "/oauth/access_token?grant_type=fb_exchange_token&client_id=" +
