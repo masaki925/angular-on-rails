@@ -2,7 +2,7 @@ class OauthsController < ApplicationController
   skip_before_filter :require_login
   require "net/https"
       
-  def current_user
+  def fetch_user
     render status: 200,
       json: {
         user: current_user
@@ -30,7 +30,13 @@ class OauthsController < ApplicationController
     debug_token_result = JSON.parse res.body
     user_id = debug_token_result["data"]["user_id"]
 
-    unless auth = Authentication.where( provider: "facebook", uid: user_id ).first
+    if auth = Authentication.where( provider: "facebook", uid: user_id ).first
+      render status: 200,
+        json: {
+          user: auth.user
+        }
+      return
+    else
       fbuser = FbGraph::User.fetch(user_id, :access_token => access_token)
 
       user = User.new(

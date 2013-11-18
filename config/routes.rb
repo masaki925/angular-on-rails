@@ -2,7 +2,8 @@ Compathy2::Application.routes.draw do
   scope :api do
     get "/" => "top#index"
     get "oauth/verify"       => "oauths#verify"
-    get "oauth/current_user" => "oauths#current_user"
+    get "oauth/fetch_user" => "oauths#fetch_user"
+    get "oauth/logout" => "oauths#logout"
     resources :users
   end
 
