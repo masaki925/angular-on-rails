@@ -1,9 +1,13 @@
 
 usage:
 	@echo "USAGE"
-	@echo "  make npm_install"
+	@echo "  make init"
 	@echo "  make bundle"
 	@echo "  make gs (grunt server)"
+
+init: bundle
+	npm install
+	bower install
 
 bundle:
 	bundle install --path=./vendor/bundler

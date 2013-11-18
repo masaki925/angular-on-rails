@@ -1,28 +1,84 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* not Tab, but Space
+  * indent: space 2
+  * we don't want to annoy with some indent problem. FYI: http://blog.livedoor.jp/dankogai/archives/50475459.html
 
-Things you may want to cover:
+* write test, run test
+  * if test fail, the change will not be merged to master branch.
+  * but sometime writing test code results over-work. balance with project dead-line.
 
-* Ruby version
+* its just a REST API
+  * client is AngularJS.
 
-* System dependencies
+=== env
 
-* Configuration
+* development
+  * local
+  * VM
+* production
+  * http[s]://www.compathy.net/ (AWS)
 
-* Database creation
+=== development setting
 
-* Database initialization
+see: http://redmine.masaki925.com:1080/projects/wanderlust/wiki/Develop_setting
 
-* How to run the test suite
+OR
 
-* Services (job queues, cache servers, search engines, etc.)
+if you wish to use Vagrant + Chef,
+see: https://github.com/masaki925/compathy_vm/
 
-* Deployment instructions
+===
 
+* Ruby (2.0.0p247)
+* Ruby on Rails 4.0.x
+* Nginx (1.4.3)
+* Unicorn (4.6.x)
+
+* RDS (MySQL 5.6.x)
+
+* sorcery
+  * but not really using... see oauths_controller for detail
+
+* spork (1.0.x)
+* RSpec (2.14.x)
+* FactoryGirl (4.2.x)
 * ...
 
+===
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+need database.yml, application.yml.
+see config/*.sample.
+
+===
+
+operations
+
+  bundle install
+  
+  # run web server
+  bundle exec rails server
+  
+  # run test server
+  bundle exec spork
+  OR
+  bundle exec rails server --debugger
+  
+  # run test
+  bundle exec rake spec
+  bundle exec rspec ./spec/hoge_spec.rb
+  
+=== About mail
+
+Be careful for mail config within config/application.yml.
+if MAIL_SMTP_USER and MAIL_SMTP_PASSWORD is set, some user triggered mail will be sent. (if you using production database data, the real use will receive your test mail !!)
+if you don't need to test sending mail, comment out these envs.
+
+=== Tips
+
+spring make it fast.
+  gem install spring
+  gem rake routes
+
+other info: http://redmine.masaki925.com:1080/projects/wanderlust/wiki/%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2
+

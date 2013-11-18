@@ -1,0 +1,48 @@
+== README
+
+* not Tab, but Space
+  * indent: space 2
+  * we don't want to annoy with some indent problem. FYI: http://blog.livedoor.jp/dankogai/archives/50475459.html
+
+* write test, run test
+  * if test fail, the change will not be merged to master branch.
+  * but sometime writing test code results over-work. balance with project dead-line.
+
+=== env
+
+* development
+  * local
+  * VM
+* production
+  * http[s]://www.compathy.net/ (AWS)
+
+=== development setting
+
+see: http://redmine.masaki925.com:1080/projects/wanderlust/wiki/Develop_setting
+
+OR
+
+if you wish to use Vagrant + Chef,
+see: https://github.com/masaki925/compathy_vm/
+
+===
+
+* AngularJS (1.2.x)
+* Grunt
+
+* twitter-bootstrap 3.0.x
+
+===
+
+need Gruntfile.js
+see *.sample.
+
+===
+
+operations
+
+  make init
+  
+  # run grunt server for development
+  make gs
+
